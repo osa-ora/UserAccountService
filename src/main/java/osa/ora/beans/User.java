@@ -1,11 +1,15 @@
 package osa.ora.beans;
 
 import java.io.Serializable;
-import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement
+
 public class User implements Serializable{
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
      * @return the login
      */
     public String getLogin() {
