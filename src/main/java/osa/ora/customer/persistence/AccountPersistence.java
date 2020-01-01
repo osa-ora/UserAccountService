@@ -23,8 +23,8 @@ public class AccountPersistence {
 		return conn;
 	}
 	public JsonMessage save(User account) {
-		String insertTableSQL = "INSERT INTO CUSTOMER "
-				+ "(LOGIN, PASSWORD, EMAIL) "
+		String insertTableSQL = "INSERT INTO account "
+				+ "(login, password, email) "
 				+ "VALUES(?,?,?)";
 
 		try (PreparedStatement preparedStatement = getConnection()
@@ -45,7 +45,7 @@ public class AccountPersistence {
 	}
 
 	public JsonMessage update(User account) {
-		String updateTableSQL = "UPDATE ACCOUNT SET LOGIN= ?, PASSWORD= ?,   EMAIL=?  WHERE ID=?";
+		String updateTableSQL = "UPDATE acount SET login= ?, password= ?,   email=?  WHERE id=?";
 		try (PreparedStatement preparedStatement = getConnection()
 				.prepareStatement(updateTableSQL);) {
 			preparedStatement.setString(1, account.getLogin());
@@ -67,7 +67,7 @@ public class AccountPersistence {
 	}
 
 	public JsonMessage delete(long id) {
-		String deleteRowSQL = "DELETE FROM Account WHERE ID=?";
+		String deleteRowSQL = "DELETE FROM account WHERE id=?";
 		try (PreparedStatement preparedStatement = getConnection()
 				.prepareStatement(deleteRowSQL)) {
 			preparedStatement.setLong(1, id);
@@ -84,12 +84,12 @@ public class AccountPersistence {
 	}
 
 	public User[] findAll() {
-		String queryStr = "SELECT * FROM Account";
+		String queryStr = "SELECT * FROM account";
 		return this.query(queryStr);
 	}
 
 	public User findbyId(long id) {
-		String queryStr = "SELECT * FROM Account WHERE ID=" + id;
+		String queryStr = "SELECT * FROM account WHERE id=" + id;
 		User account = null;
 		User accounts[] = this.query(queryStr);
 		if (accounts != null && accounts.length > 0) {
@@ -98,7 +98,7 @@ public class AccountPersistence {
 		return account;
 	}
 	public User loginUser(String login,String password) {
-		String queryStr = "SELECT * FROM Account WHERE LOGIN='" + login+"' and PASSWORD='"+password+"'";
+		String queryStr = "SELECT * FROM account WHERE login='" + login+"' and password='"+password+"'";
 		User account = null;
 		User accounts[] = this.query(queryStr);
 		if (accounts != null && accounts.length > 0) {
