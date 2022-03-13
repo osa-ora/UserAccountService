@@ -26,15 +26,7 @@ spec:
           image-registry.openshift-image-registry.svc:5000/openshift/mysql
     - type: ConfigChange
   replicas: 1
-  revisionHistoryLimit: 10
-  test: false
-  selector:
-    name: user-accounts-db
   template:
-    metadata:
-      creationTimestamp: null
-      labels:
-        name: user-accounts-db
     spec:
       volumes:
         - name: user-accounts-db-data
@@ -104,7 +96,3 @@ spec:
           image: >-
             image-registry.openshift-image-registry.svc:5000/openshift/mysql
       restartPolicy: Always
-      terminationGracePeriodSeconds: 30
-      dnsPolicy: ClusterFirst
-      securityContext: {}
-      schedulerName: default-scheduler
