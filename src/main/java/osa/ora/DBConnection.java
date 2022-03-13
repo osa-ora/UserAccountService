@@ -56,9 +56,9 @@ public class DBConnection {
 	                e.printStackTrace();
 	            }
 	        }
-	    	}catch(Exception e){
-	    		e.printStackTrace();
-	    	}
+	}catch(Exception e){
+		e.printStackTrace();
+	}
         return connection;
     }
 }
