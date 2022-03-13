@@ -1,0 +1,26 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: useraccount-service
+  namespace: dev
+  labels:
+    app.kubernetes.io/part-of: user-accounts
+    application: user-accounts
+spec:
+  template:
+    spec:
+      containers:
+        - image: image-registry.openshift-image-registry.svc:5000/dev/useraccount-service
+          env:
+            - name: DBAAS_DEFAULT_CONNECT_DESCRIPTOR
+              value: 'user-accounts-db:3306/accounts'
+            - name: DBAAS_USER_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-ephemeral-parameters-86dmt
+                  key: MYSQL_USER
+            - name: DBAAS_USER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-ephemeral-parameters-86dmt
+                  key: MYSQL_PASSWORD
