@@ -1,0 +1,34 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: useraccount-service
+  namespace: dev
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'useraccount-service:latest'
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: 'java:latest'
+      forcePull: true
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/osa-ora/UserAccountService'
+      ref: master
+  triggers:
+    - type: GitHub
+      github:
+        secret: uDlk17Bn
+    - type: Generic
+      generic:
+        secret: FoVsK0eR
+    - type: ImageChange
+      imageChange: {}
+    - type: ConfigChange
+  runPolicy: Serial
