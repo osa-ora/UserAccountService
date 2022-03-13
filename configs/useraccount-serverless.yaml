@@ -17,10 +17,10 @@ spec:
             - name: DBAAS_USER_NAME
               valueFrom:
                 secretKeyRef:
-                  name: mysql-ephemeral-parameters-86dmt
-                  key: MYSQL_USER
+                  name: user-accounts-db
+                  key: database-user
             - name: DBAAS_USER_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: mysql-ephemeral-parameters-86dmt
-                  key: MYSQL_PASSWORD
+                  name: user-accounts-db
+                  key: database-password
