@@ -40,7 +40,7 @@ public class UserAccountController {
             account.setPassword("*******");
             return account;
         } else {
-            throw null;
+            return null;
             
         }
 	}
