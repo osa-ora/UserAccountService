@@ -26,6 +26,8 @@ spec:
           image-registry.openshift-image-registry.svc:5000/openshift/mysql
     - type: ConfigChange
   replicas: 1
+  selector:
+    name: user-accounts-db
   template:
     spec:
       volumes:
