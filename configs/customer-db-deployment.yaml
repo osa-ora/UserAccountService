@@ -29,6 +29,9 @@ spec:
   selector:
     name: user-accounts-db
   template:
+    metadata:
+      labels:
+        name: user-accounts-db
     spec:
       volumes:
         - name: user-accounts-db-data
