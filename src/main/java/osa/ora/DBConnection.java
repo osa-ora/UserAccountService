@@ -53,7 +53,7 @@ public class DBConnection {
 	            try {
 			connection =
        				DriverManager.getConnection(URL + DBAAS_DEFAULT_CONNECT_DESCRIPTOR.orElse(LOCAL_DEFAULT_CONNECT_DESCRIPTOR) +
-                                   "user="+DBAAS_USERNAME.orElse(LOCAL_USERNAME)+"&password="+DBAAS_PASSWORD.orElse(LOCAL_PASSWORD));
+                                   "?user="+DBAAS_USERNAME.orElse(LOCAL_USERNAME)+"&password="+DBAAS_PASSWORD.orElse(LOCAL_PASSWORD));
 	            } catch (SQLException e) {
 	                e.printStackTrace();
 	            }
