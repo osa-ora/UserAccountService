@@ -6,6 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: user-accounts
     application: user-accounts
+    serving.knative.dev/visibility: cluster-local
 spec:
   template:
     spec:
